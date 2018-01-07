@@ -2,7 +2,6 @@
 # https://pythonprogramming.net/neural-networks-machine-learning-tutorial/
 # Video: https://www.youtube.com/watch?v=mynJtLhhcXk&index=57&list=PLQVvvaa0QuDfKTOs3Keq_kaG2P55YRn5v
 
-
 import tensorflow as tf
 from tensorflow.examples.tutorials.mnist import input_data
 
