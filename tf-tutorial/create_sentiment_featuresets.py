@@ -6,6 +6,7 @@
 
 # The plan and theory for applying our deep neural network to some sentiment training data, and now we're going to be
 # working on the pre-processing script for that.
+# This code will take our string sample data and convert it to vectors.
 
 # Prerequisite:
 # run Python:
@@ -72,7 +73,7 @@ def create_lexicon(pos,neg):
         #print(w_counts[w])
         if 1000 > w_counts[w] > 50:
             l2.append(w)
-    print('Result =',len(l2))
+    print('[create_lexicon] Result =',len(l2))
     return l2
 
 def sample_handling(sample,lexicon,classification):
