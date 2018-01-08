@@ -27,6 +27,9 @@ lemmatizer = WordNetLemmatizer()
 # you can set a smaller number here
 hm_lines = 100000
 
+# Data files are downloaded from:
+# Positive data: https://pythonprogramming.net/static/downloads/machine-learning-data/pos.txt
+# Negative data: https://pythonprogramming.net/static/downloads/machine-learning-data/neg.txt
 pos_file = 'data/pos.txt'
 neg_file = 'data/neg.txt'
 pickle_file = 'data/sentiment_set.pickle'
