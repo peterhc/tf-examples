@@ -31,6 +31,7 @@ def recurrent_neural_network(x):
     x = tf.reshape(x, [-1, chunk_size])
     x = tf.split(x, n_chunks, 0)
 
+    # LSTM cell
     lstm_cell = rnn_cell.BasicLSTMCell(rnn_size,state_is_tuple=True)
     outputs, states = rnn.static_rnn(lstm_cell, x, dtype=tf.float32)
 
@@ -66,6 +67,7 @@ def train_recurrent_neural_network(x):
 
 
 train_recurrent_neural_network(x)
+# Accuracy: ~98.42%
 
 
 
