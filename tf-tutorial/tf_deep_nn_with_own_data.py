@@ -1,3 +1,7 @@
+# Training and Testing on our Data for Deep Learning
+# URL: https://pythonprogramming.net/train-test-tensorflow-deep-learning-tutorial/
+# Youtube video: https://www.youtube.com/watch?list=PLQVvvaa0QuDfKTOs3Keq_kaG2P55YRn5v&time_continue=1&v=6rDWwL6irG0
+
 from create_sentiment_featuresets import create_feature_sets_and_labels
 import tensorflow as tf
 # from tensorflow.examples.tutorials.mnist import input_data
