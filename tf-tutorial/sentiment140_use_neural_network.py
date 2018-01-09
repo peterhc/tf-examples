@@ -55,12 +55,12 @@ saver = tf.train.Saver()
 
 def use_neural_network(input_data):
     prediction = neural_network_model(x)
-    with open('lexicon.pickle' ,'rb') as f:
+    with open('lexicon74.pickle' ,'rb') as f:
         lexicon = pickle.load(f)
 
     with tf.Session() as sess:
-        sess.run(tf.initialize_all_variables())
-        saver.restore(sess ,"model.ckpt")
+        sess.run(tf.global_variables_initializer())
+        saver.restore(sess ,"model74.ckpt")
         current_words = word_tokenize(input_data.lower())
         current_words = [lemmatizer.lemmatize(i) for i in current_words]
         features = np.zeros(len(lexicon))
@@ -81,4 +81,5 @@ def use_neural_network(input_data):
             print('Negative:' ,input_data)
 
 use_neural_network("He's an idiot and a jerk.")
+use_neural_network("He's an idiot.")
 use_neural_network("This was the best store i've ever seen.")
