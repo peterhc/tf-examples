@@ -3,6 +3,8 @@
 # URL: https://pythonprogramming.net/data-size-example-tensorflow-deep-learning-tutorial/
 # Youtube video: https://www.youtube.com/watch?list=PLQVvvaa0QuDfKTOs3Keq_kaG2P55YRn5v&time_continue=241&v=JeamFbHhmDo
 
+# NOTE: Based on your CPU/GUP power, this code may take a long time to run.
+
 import tensorflow as tf
 import pickle
 import numpy as np
@@ -47,8 +49,8 @@ def neural_network_model(data):
     output = tf.matmul(l2 ,output_layer['weight']) + output_layer['bias']
     return output
 
-# Save/restore Tensoflow models
-saver = tf.train.Saver()
+# Add ops to save and restore Tensoflow model
+saver = tf.train.Saver()  # No specific variable included so save all the variables
 tf_log = 'tf.log'
 
 def train_neural_network(x):
@@ -66,7 +68,7 @@ def train_neural_network(x):
 
         while epoch <= hm_epochs:
             if epoch != 1:
-                saver.restore(sess ,"model.ckpt")
+                saver.restore(sess ,"/tmp/model.ckpt")
             epoch_loss = 1
             with open('lexicon.pickle' ,'rb') as f:
                 lexicon = pickle.load(f)
@@ -100,8 +102,9 @@ def train_neural_network(x):
                         batches_run += 1
                         print('Batch run:' ,batches_run ,'/' ,total_batches ,'| Epoch:' ,epoch ,'| Batch Loss:' ,c ,)
 
-            saver.save(sess, "model.ckpt")
-            print('Epoch', epoch, 'completed out of' ,hm_epochs ,'loss:' ,epoch_loss)
+            save_path = saver.save(sess, "/tmp/model.ckpt")  # ValueError: Parent directory of model.ckpt doesn't exist, can't save.
+            print ("Model saved in file: %s" % save_path)
+            print ('Epoch', epoch, 'completed out of' ,hm_epochs ,'loss:' ,epoch_loss)
             with open(tf_log ,'a') as f:
                 f.write(str(epoch ) +'\n')
             epoch += 1
