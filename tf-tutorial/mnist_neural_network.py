@@ -82,6 +82,7 @@ def train_neural_network(x):
 
 
 train_neural_network(x)
+# This code yeilded very poor (~60%) accuracy
 
 
 
