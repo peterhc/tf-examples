@@ -45,3 +45,16 @@ model.fit({'input': X}, {'targets': Y}, n_epoch=10, validation_set=({'input': te
     snapshot_step=500, show_metric=True, run_id='mnist')
 
 model.save('/tmp/quicktest.model')
+
+# Once you've saved, you can load the model with:
+#model = tflearn.DNN(convnet)
+#model.load('quicktest.model')
+# You still need to setup the structure of the model. The .load method just simply restores the weights,
+# so you also obviously need the model to have the same layers and neurons.
+
+# After this load, you could do something like this to test predictions:
+#import numpy as np
+#print( np.round(model.predict([test_x[1]])[0]) )
+#print(test_y[1])
+
+# If you wanted to continue training? Just simply run .fit on your new data, save it, and continue.
