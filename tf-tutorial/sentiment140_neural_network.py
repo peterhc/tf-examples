@@ -102,7 +102,7 @@ def train_neural_network(x):
                         batches_run += 1
                         print('Batch run:' ,batches_run ,'/' ,total_batches ,'| Epoch:' ,epoch ,'| Batch Loss:' ,c ,)
 
-            save_path = saver.save(sess, "/tmp/model.ckpt")  # ValueError: Parent directory of model.ckpt doesn't exist, can't save.
+            save_path = saver.save(sess, "/tmp/model.ckpt")
             print ("Model saved in file: %s" % save_path)
             print ('Epoch', epoch, 'completed out of' ,hm_epochs ,'loss:' ,epoch_loss)
             with open(tf_log ,'a') as f:
