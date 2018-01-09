@@ -43,25 +43,30 @@ convnet = max_pool_2d(convnet, 2)
 convnet = fully_connected(convnet, 1024, activation='relu')
 convnet = dropout(convnet, 0.8)
 
-# Fully Connected Layer
+# Output Layer (also Fully Connected Layer)
 convnet = fully_connected(convnet, 10, activation='softmax')
 convnet = regression(convnet, optimizer='adam', learning_rate=0.01, loss='categorical_crossentropy', name='targets')
 
-model = tflearn.DNN(convnet)
+model = tflearn.DNN(convnet) # Deep Nerual Network model
 model.fit({'input': X}, {'targets': Y}, n_epoch=10, validation_set=({'input': test_x}, {'targets': test_y}),
     snapshot_step=500, show_metric=True, run_id='mnist')
 
-model.save('/tmp/quicktest.model')
+# Save the model.
+model.save('/tmp/quicktest.model') # Only saved weight values.
 
+'''
 # Once you've saved, you can load the model with:
-#model = tflearn.DNN(convnet)
-#model.load('quicktest.model')
+model = tflearn.DNN(convnet)
+model.load('quicktest.model')
 # You still need to setup the structure of the model. The .load method just simply restores the weights,
 # so you also obviously need the model to have the same layers and neurons.
+'''
 
+'''
 # After this load, you could do something like this to test predictions:
-#import numpy as np
-#print( np.round(model.predict([test_x[1]])[0]) )
-#print(test_y[1])
+import numpy as np
+print( np.round(model.predict([test_x[1]])[0]) )
+print(test_y[1])
+'''
 
 # If you wanted to continue training? Just simply run .fit on your new data, save it, and continue.
