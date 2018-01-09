@@ -13,30 +13,37 @@
 # and that becomes the new valgit mv tf-tuue for the entire region. Fully Connected Layers are typical neural networks, where all
 # nodes are "fully connected." The convolutional layers are not fully connected like a traditional neural network.
 
+# TFLearn
 # pip install --upgrade tflearn
 
-import tflearn
+import tflearn  # no need to import Tensorflow
 from tflearn.layers.conv import conv_2d, max_pool_2d
 from tflearn.layers.core import input_data, dropout, fully_connected
 from tflearn.layers.estimator import regression
 import tflearn.datasets.mnist as mnist
 
+# Load MNist data
 X, Y, test_x, test_y = mnist.load_data(one_hot=True)
 
-X = X.reshape([-1, 28, 28, 1])
+X = X.reshape([-1, 28, 28, 1])  # Mnist data image is in 28x28 pixel
 test_x = test_x.reshape([-1, 28, 28, 1])
 
+# Input Layer
 convnet = input_data(shape=[None, 28, 28, 1], name='input')
 
+# ConvNet Layer
 convnet = conv_2d(convnet, 32, 2, activation='relu')
 convnet = max_pool_2d(convnet, 2)
 
+# ConvNet Layer
 convnet = conv_2d(convnet, 64, 2, activation='relu')
 convnet = max_pool_2d(convnet, 2)
 
+# Fully Connected Layer
 convnet = fully_connected(convnet, 1024, activation='relu')
 convnet = dropout(convnet, 0.8)
 
+# Fully Connected Layer
 convnet = fully_connected(convnet, 10, activation='softmax')
 convnet = regression(convnet, optimizer='adam', learning_rate=0.01, loss='categorical_crossentropy', name='targets')
 
