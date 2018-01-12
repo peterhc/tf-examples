@@ -1,5 +1,8 @@
 # Python
 import tensorflow as tf
+print ("Tensorflow version:",tf.__version__) # Tensorflow version info
+
 hello = tf.constant('Hello, TensorFlow!')
-sess = tf.Session()
-print(sess.run(hello))
+
+with tf.Session() as sess:
+    print(sess.run(hello))
