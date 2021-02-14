@@ -32,8 +32,7 @@ b = tf.constant(Y, dtype=tf.int32, shape=[3, 2])
 # `a` * `b`
 # [[ 58,  64],
 #  [139, 154]]
-with tf.Session() as sess:
-    print('==> Matrix Multiplication using tf.matlul(). Result=\n', sess.run(tf.matmul(a, b)))
+print('==> Matrix Multiplication using tf.matlul(). Result=\n', tf.matmul(a, b))
 
 #==============================
 
@@ -77,20 +76,12 @@ b = tf.constant(np.arange(13, 25, dtype=np.int32), shape=[2, 3, 2])
 #   [229, 244]],
 #  [[508, 532],
 #   [697, 730]]]
-with tf.Session() as sess:
-    print('==> 3D Tensor Matrix using tf.matmul() Result=\n', sess.run(tf.matmul(a, b)))
+print('==> 3D Tensor Matrix using tf.matmul() Result=\n', tf.matmul(a, b))
 
 #==============================
 
 # Tensorflow Maxtix Multiplication with Random numbers
-x = tf.placeholder(tf.float32, shape=(1024, 1024))
-y = tf.matmul(x, x)
-
-with tf.Session() as sess:
-#  print(sess.run(y))  # ERROR: will fail because x was not fed.
-
-  rand_array = np.random.rand(1024, 1024)
-  print('==> Tensorflow Matrix Multiplication. Result=\n', sess.run(y, feed_dict={x: rand_array}))  # Will succeed.
+rand_array = np.random.rand(1024, 1024)
+print('==> Tensorflow Matrix Multiplication\n. Result=\n', rand_array)
 
 #==============================
-
